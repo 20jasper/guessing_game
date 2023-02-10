@@ -11,14 +11,21 @@ fn main() {
 
 		let mut guess = String::new();
 
-		io::stdin()
-			.read_line(&mut guess)
-			.expect("uh oh");
+		match io::stdin().read_line(&mut guess) {
+			Ok(str) => str,
+			Err(_) => {
+				println!("error reading line, try again");
+				continue;
+			}
+		};
 
-		let guess: u32 = guess
-			.trim()
-			.parse()
-			.expect("Please type a number!");
+		let guess: u32 = match guess.trim().parse() {
+			Ok(num) => num,
+			Err(_) => {
+				println!("error parsing number, please try again");
+				continue;
+			}
+		};
 
 		println!("your guess is {guess}");
 
