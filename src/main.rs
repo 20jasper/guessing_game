@@ -4,8 +4,6 @@ use std::io;
 fn main() {
 	let random_num = rand::thread_rng().gen_range(1..=100);
 
-	println!("random num is {random_num}");
-
 	loop {
 		println!("guess a number 1 - 100");
 
